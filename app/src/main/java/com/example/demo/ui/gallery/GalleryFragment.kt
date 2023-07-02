@@ -1,15 +1,19 @@
 package com.example.demo.ui.gallery
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.demo.base.Config
 import com.example.demo.databinding.FragmentGalleryBinding
 
 class GalleryFragment : Fragment() {
+
+    private val TAG: String = Config.BASE_TAG + GalleryFragment::class.java.simpleName
 
     private var _binding: FragmentGalleryBinding? = null
 
@@ -22,6 +26,7 @@ class GalleryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Log.d(TAG, "onCreateView: ")
         val galleryViewModel =
             ViewModelProvider(this).get(GalleryViewModel::class.java)
 
@@ -36,6 +41,7 @@ class GalleryFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        Log.d(TAG, "onDestroyView: ")
         super.onDestroyView()
         _binding = null
     }
