@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_notifications" />
 
+    <item
+        android:id="@+id/navigation_point"
+        android:icon="@drawable/ic_menu_point"
+        android:title="@string/title_point" />
+
 </menu>
