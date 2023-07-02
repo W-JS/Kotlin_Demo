@@ -3,6 +3,7 @@ package com.example.demo
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -47,6 +48,13 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onResume() {
+        Log.d(TAG, "onResume: ")
+        super.onResume()
+        Toast.makeText(this, "Enter ${MainActivity::class.java.simpleName}", Toast.LENGTH_SHORT)
+            .show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

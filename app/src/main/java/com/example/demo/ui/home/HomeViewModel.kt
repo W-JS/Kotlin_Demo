@@ -15,4 +15,9 @@ class HomeViewModel : ViewModel() {
         value = "提示"
     }
     val hintText: LiveData<String> = _hintText
+
+    private val _jumpText = MutableLiveData<String>().apply {
+        value = "跳转"
+    }
+    val jumpText: LiveData<String> = _jumpText
 }
