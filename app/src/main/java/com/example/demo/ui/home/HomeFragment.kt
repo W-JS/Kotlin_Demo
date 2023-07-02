@@ -5,13 +5,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.demo.R
 import com.example.demo.base.Config
 import com.example.demo.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), View.OnClickListener {
 
     private val TAG: String = Config.BASE_TAG + HomeFragment::class.java.simpleName
 
@@ -37,6 +41,13 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+        val hintBtn: Button = binding.btnHint
+        homeViewModel.hintText.observe(viewLifecycleOwner) {
+            hintBtn.text = it
+        }
+        hintBtn.setOnClickListener(this)
+
         return root
     }
 
@@ -44,5 +55,16 @@ class HomeFragment : Fragment() {
         Log.d(TAG, "onDestroyView: ")
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.btn_hint -> {
+                val text = binding.btnHint.text
+                Log.d(TAG, "onClick: $text")
+                val activity: FragmentActivity? = this.activity
+                Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

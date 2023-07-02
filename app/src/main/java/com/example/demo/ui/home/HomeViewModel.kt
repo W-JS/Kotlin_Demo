@@ -10,4 +10,9 @@ class HomeViewModel : ViewModel() {
         value = "This is home Fragment"
     }
     val text: LiveData<String> = _text
+
+    private val _hintText = MutableLiveData<String>().apply {
+        value = "提示"
+    }
+    val hintText: LiveData<String> = _hintText
 }
